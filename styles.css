@@ -17,21 +17,6 @@ body {
     height: 100%;
     padding: 20px;
     transition: 0.3s ease;
-}
-
-#cart-sidebar.active {
-    right: 0;
-}
-
-#cart-sidebar {
-    width: 300px;
-    background-color: #f8f9fa;
-    position: fixed;
-    right: -300px;
-    top: 0;
-    height: 100%;
-    padding: 20px;
-    transition: 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
@@ -48,6 +33,12 @@ body {
 #cart-items li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 }
 
+#cart-sidebar #close-cart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
