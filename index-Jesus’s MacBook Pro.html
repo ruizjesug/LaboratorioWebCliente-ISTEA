@@ -6,7 +6,6 @@
     <title>E-commerce</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> <!--Enlace a Libreria Bootstrap-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,17 +13,24 @@
   <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
     <div class = "container">
         <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
-            <img src = "images/icons/shopping-bag-icon.png" alt = "Logo del sitio">
+            <img src = "images/icons/shopping-bag-icon.png" alt = "site icon">
             <span class = "text-uppercase fw-lighter ms-2">ISTEA</span>
         </a>
 
-        <!--Carrito inicio-->
-        <div class = "order-lg-2 nav-btns"> 
-          <button class="btn btn-outline-dark" id="cart-btn"><i class="bi bi-cart4"></i><span id="cart-count">(0)</span>
-          </button>
+        <div class = "order-lg-2 nav-btns">
+            <button type = "button" class = "btn position-relative">
+                <i class = "fa fa-shopping-cart"></i>
+                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">5</span>
+            </button>
+            <button type = "button" class = "btn position-relative">
+                <i class = "fa fa-heart"></i>
+                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">2</span>
+            </button>
+            <button type = "button" class = "btn position-relative">
+                <i class = "fa fa-search"></i>
+            </button>
         </div>
-        <!--Carrito final-->
-      
+
         <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
             <span class = "navbar-toggler-icon"></span>
         </button>
@@ -35,25 +41,59 @@
                     <a class = "nav-link text-uppercase text-dark" href = "#header">Inicio</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#SegundoBloque">SegundoBloque</a>
+                    <a class = "nav-link text-uppercase text-dark" href = "#collection">SegundoBloque</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#TercerBloque">TercerBloque</a>
+                    <a class = "nav-link text-uppercase text-dark" href = "#special">specials</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#CuartoBloque">CuartoBloque</a>
+                    <a class = "nav-link text-uppercase text-dark" href = "#blogs">blogs</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#UltimoBloque">UltimoBloque</a>
+                    <a class = "nav-link text-uppercase text-dark" href = "#about">about us</a>
                 </li>
                 <li class = "nav-item px-2 py-2 border-0">
+                  <button class="btn btn-outline-dark" id="cart-btn">
+                    Mi Carrito <span id="cart-count">(0)</span>
+                  </button>
                 </li>
             </ul>
             
         </div>
     </div>
   </nav>
+  <!--NUEVO NAVBAR en construccion Final-->  
   
+  
+  
+  <!-- Navbar (Barra de navegacion) por bloques INICIO
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="#">ISTEA</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Segundo bloque</a>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tercer bloque</a>
+            </li>
+            </ul>
+              <button class="btn btn-outline-dark" id="cart-btn">
+                Mi Carrito <span id="cart-count">(0)</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    -->
+      
     <main class="container mt-4">
         <div class="row" id="product-list">
             <!-- Productos renderizados dinámicamente aquí -->
