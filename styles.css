@@ -13,12 +13,39 @@ body {
     background-color: #f8f9fa;
     position: fixed;
     right: -300px;
-    top: 0;
-    height: 100%;
+    top: 120px; /* Cambia de top: 0 a top: 80px */
+    height: calc(100% - 80px); /* Ajusta la altura para tener en cuenta el espacio superior */
     padding: 20px;
     transition: 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+}
+
+.card {
+    width: 18rem; /* Ajusta el ancho de la tarjeta */
+    height: 28rem; /* Ajusta la altura de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15rem; /* Ajusta la altura de la imagen */
+    object-fit: cover;
+}
+
+.row {
+    margin: 0 -15px; /* Ajusta el margen negativo si es necesario */
+}
+
+.col-md-4 {
+    padding: 0 15px; /* Ajusta el relleno para el espacio entre columnas */
+}
+
+.card-body {
+    flex-grow: 1;
 }
 
 #cart-sidebar.active {
