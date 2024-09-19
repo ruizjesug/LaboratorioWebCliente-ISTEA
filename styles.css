@@ -104,6 +104,11 @@ img {
     font-weight: 400;
 }
 
+.card-body button:hover{
+    background-color: #0a2ff1;
+    color: #ffffff;
+}
+
 .modal-title{
     font-family: Poppins;
     font-weight: 700;
@@ -147,6 +152,19 @@ img {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+
+.btn-outline-dark:hover{
+    background-color: #0a2ff1;
+}
+
+.swal2-title{
+    font-family: Poppins;
+}
+
+button.swal2-confirm{
+    background-color:#0a2ff1
 }
 
 .main-navigation {
@@ -204,7 +222,7 @@ ul {
 }
 
 .main-navigation .menu li a:hover, .main-navigation .menu li .active-menu, .main-navigation .menu .sub-menu li .active-sub-menu {
-    color: #005fa5;
+    color: #0a2ff1;
     background: #f3f3f5;
     /* box-shadow: inset 8px 8px 12px #e2e2e2, inset -8px -8px 12px #ffffff; */
 }
