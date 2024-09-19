@@ -10,7 +10,7 @@ body {
 
 
 .body-fixed {
-    position: fixed;
+    position: relative;
     width: 100%;
     height: 100vh;
     top: auto;
@@ -23,6 +23,11 @@ body, html {
 
 img {
     max-width: 100%;
+}
+
+#product-list{
+    margin-top: 120px;
+    position: relative;
 }
 
 .site-header {
@@ -47,7 +52,7 @@ img {
 
 #cart-btn {
     position: fixed;
-    top: 10px;
+    top: 20px;
     right: 20px;
 }
 
@@ -56,7 +61,7 @@ img {
     background-color: #f8f9fa;
     position: fixed;
     right: -300px;
-    top: 120px; /* Cambia de top: 0 a top: 80px */
+    top: 90px; /* Cambia de top: 0 a top: 80px */
     height: calc(100% - 80px); /* Ajusta la altura para tener en cuenta el espacio superior */
     padding: 20px;
     transition: 0.3s ease;
@@ -64,7 +69,7 @@ img {
     z-index: 1000;
 }
 
-.card {
+.card{
     width: 18rem; /* Ajusta el ancho de la tarjeta */
     height: 28rem; /* Ajusta la altura de la tarjeta */
     display: flex;
@@ -74,9 +79,40 @@ img {
 }
 
 .card-img-top {
+    padding: 20px;
     width: 100%;
     height: 15rem; /* Ajusta la altura de la imagen */
-    object-fit: cover;
+    object-fit: contain;
+}
+
+.card-title{
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.card-text{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.card-body button{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.modal-title{
+    font-family: Poppins;
+    font-weight: 700;
+}
+
+.modal-body h5{
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .row {
@@ -127,13 +163,6 @@ img {
     margin: 0 6px;
 }
 
-.main-navigation .menu li:first-child {
-    margin-left: 0;
-}
-
-.main-navigation .menu li:last-child {
-    margin-right: 0;
-}
 
 .main-navigation .menu li:hover>ul, .main-navigation .menu li.focus>ul {
     opacity: 1;
@@ -244,16 +273,12 @@ ul {
     outline: none !important;
     padding: 10px 15px;
     color: #0d0d25;
-    -webkit-appearance: none;
     border-radius: 10px;
     border: none;
     background: #f8f8f8;
     box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
 }
 
-* {
-    -webkit-tap-highlight-color: transparent;
-}
 
 .uil {
     color: #005fa5;
@@ -268,6 +293,8 @@ ul {
     width: 50px;
     height: 50px;
 }
+
+
 
 @media screen and (min-width: 992px) {
     .menu-toggle {
@@ -688,184 +715,6 @@ p {
     .main-banner {
         padding: 200px 0;
     }
-    .banner-img-wp {
-        height: 360px;
-    }
-    .dish-box {
-        padding: 0 0 40px;
-    }
-    .dist-img img {
-        width: 220px;
-    }
-    .dist-img {
-        margin-top: -110px;
-    }
-    .dist-bottom-row ul li b {
-        font-size: 28px;
-    }
-    .sec-text {
-        padding: 0;
-    }
-    .team-img {
-        height: 340px;
-    }
-    .testimonials-box {
-        padding: 30px 20px;
-        margin: 26px 0 30px;
-    }
-    .testimonials-box-img {
-        min-width: 80px;
-        min-height: 80px;
-        margin-top: -80px;
-    }
-    .faq-box .h4-title {
-        padding: 16px 20px;
-    }
-    .faq-box p {
-        padding: 8px 20px 20px;
-    }
-    .blog-img {
-        height: 240px;
-    }
-    .newsletter-box-text {
-        padding: 0;
-    }
-    .footer-flex-box>div {
-        padding: 0 10px;
-    }
-    .star-rating {
-        font-size: 19px;
-    }
-    .testimonial-box-top {
-        margin-bottom: 10px;
-    }
-    .call-now a {
-        font-size: 28px;
-    }
-    .menu-box {
-        padding: 50px 20px 30px 20px;
-    }
-    .menu-img {
-        width: 140px;
-    }
-}
-
-@media (max-width: 991px) {
-    .js-parallax-scene {
-        display: none;
-    }
-    .main-banner {
-        padding: 140px 0 60px;
-    }
-    .h1-title {
-        font-size: 60px;
-        line-height: 80px;
-    }
-    .banner-img-wp {
-        padding: 0;
-        height: 75vw;
-        padding-top: 50px;
-    }
-    .brands-box {
-        padding: 0 30px;
-    }
-    .brands-row {
-        margin: 0 -30px;
-    }
-    .menu-tab ul {
-        white-space: nowrap;
-        overflow: hidden;
-        overflow-x: auto;
-    }
-    .menu-tab::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100px;
-        height: 100%;
-        pointer-events: none;
-        opacity: 0.2;
-        border-radius: 0 60px 60px 0;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    }
-    .sec-text {
-        margin-top: 40px;
-    }
-    .call-now {
-        border: none;
-        margin: 40px 0;
-        border-top: 3px dotted rgb(13 13 17 / 50%);
-        border-bottom: 3px dotted rgb(13 13 17 / 50%);
-        padding: 30px 0;
-    }
-    .book-table-info {
-        max-width: 300px;
-        margin: 30px auto 0;
-    }
-    .swiper-button-wp .swiper-button {
-        display: none !important;
-    }
-    .testimonials-img img {
-        position: unset;
-        width: 100%;
-    }
-    .testimonials-img {
-        margin-bottom: 60px;
-    }
-    .faq-row {
-        column-count: 1;
-        margin: 0;
-    }
-    .newsletter-box {
-        padding: 40px;
-    }
-    .footer-info {
-        margin-bottom: 50px;
-    }
-    .footer-flex-box {
-        display: block;
-        margin: 0;
-    }
-    .footer-flex-box>div {
-        padding: 0;
-        margin-bottom: 30px;
-    }
-    .faq-box {
-        margin: 0;
-        margin-bottom: 30px;
-    }
-    .footer-flex-box>div:last-child {
-        margin: 0;
-    }
-    .scrolltop {
-        bottom: 130px;
-    }
-    .footer-menu ul {
-        max-width: 300px;
-    }
-    #gallery {
-        padding-top: 90px;
-    }
-    .swiper-pagination-bullet {
-        margin: 0 5px !important;
-        width: 8px;
-        height: 8px;
-    }
-    .swiper-pagination {
-        padding: 6px 20px;
-    }
-    .swiper-button-wp {
-        margin-top: 40px;
-    }
-    .swiper-pagination-bullet-active {
-        width: 16px;
-    }
-    .dish-title .h3-title {
-        display: block;
-        min-height: auto;
-        margin-bottom: 12px;
-    }
     .menu-img {
         width: 180px;
         margin-inline: auto;
@@ -892,43 +741,7 @@ p {
         min-height: 60vw;
         width: auto;
     }
-    .dist-img img {
-        width: 180px;
-    }
-    .dist-img {
-        margin-top: -80px;
-    }
-    .menu-tab-wp {
-        margin-bottom: 60px;
-    }
-    .dish-box {
-        margin: 80px 0 30px;
-    }
-    .book-table-img {
-        min-height: 340px;
-        height: 60vh;
-    }
-    .team-img {
-        height: 430px;
-    }
-    .dish-info ul li p {
-        font-size: 16px;
-        line-height: 26px;
-        margin: 0;
-    }
-    .dish-info ul li b {
-        font-size: 14px;
-    }
-    .brands-box {
-        padding: 0 25px;
-    }
-    .brands-row {
-        margin: 0 -25px;
-    }
-    .menu-tab ul li {
-        padding: 10px 20px;
-    }
-}
+    
 
 @media (max-width: 575px) {
     .container, .container-fluid {
@@ -945,63 +758,7 @@ p {
     .banner-img-wp {
         height: 90vw;
     }
-    .about-video-img {
-        height: 30vw;
-        min-height: 280px;
-        border-radius: 30px;
-    }
-    .brands-box {
-        padding: 0 15px;
-        flex: 0 0 33%;
-        margin-bottom: 30px;
-    }
-    .brands-row {
-        margin: 0 -15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .dish-box {
-        max-width: 340px;
-        margin: 80px auto 30px;
-        padding: 0 0 30px;
-    }
-    .blog-sec.section {
-        padding-bottom: 0;
-    }
-    .brands-box img {
-        max-width: 80%;
-    }
-    .brand-title {
-        text-align: center;
-    }
-    .play-btn {
-        width: 70px;
-        height: 70px;
-    }
-    .play-btn-wp span {
-        font-size: 18px;
-    }
-    .newsletter-box {
-        padding: 15px;
-    }
-    .newsletter-form .form-input {
-        padding: 0 130px 0 12px;
-    }
-    .menu-box {
-        display: block;
-        text-align: center;
-    }
-    .menu-box-right .dish-title .h3-title {
-        padding: 0;
-    }
-    .gallery-img {
-        height: 50vw;
-    }
-    .contact-info a {
-        font-size: 18px;
-        line-height: 28px;
-    }
-}
+    
 
 @media (max-width: 480px) {
     .team-img {
@@ -1040,3 +797,4 @@ p {
         padding: 20px;
     }
 }
+}}
