@@ -16,44 +16,51 @@
   <!-- MENU DE NAVEGACION (navbar) Inicio -->
   <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
     <div class = "container">
-        <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
-            <img src = "images/icons/shopping-bag-icon.png" alt = "Logo del sitio">
-            <span class = "text-uppercase fw-lighter ms-2">ISTEA</span>
-        </a>
+        <div class="header-logo">
+            <a href="index.html">
+                <img src="./images/logotype-istea-fill-blue.png" width="120" height="32" alt="Logo">
+            </a>
+        </div>
+
+        <div class="col-lg-10">
+            <div class="main-navigation">
+                <nav class="header-menu">
+                    <ul class="menu food-nav-menu">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#acerca">Nosotros</a></li>
+                        <li><a href="#categorias">Categorías</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="header-right">
+                    <form action="#" class="header-search-form for-des">
+                        <input type="search" class="form-input" placeholder="Buscar...">
+                        <button type="submit">
+                            <i class="uil uil-search"></i>
+                        </button>
+                    </form>
+                    <!-- <a href="javascript:void(0)" class="header-btn header-cart">
+                        <i class="uil uil-shopping-bag"></i>
+                    </a> -->
+                    <a href="javascript:void(0)" class="header-btn">
+                        <!-- <i class="fa-solid fa-user"></i> -->
+                        <!-- <i class="uil uil-user-md"></i> -->
+                        <i class="uil uil-user-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <!--Carrito inicio-->
         <div class = "order-lg-2 nav-btns"> 
-          <button class="btn btn-outline-dark" id="cart-btn"><i class="bi bi-cart4"></i><span id="cart-count">(0)</span>
+            <button class="btn btn-outline-dark" id="cart-btn"><i class="bi bi-cart4"></i><span id="cart-count">(0)</span>
+            </button>
+          </div>
+          <!--Carrito final-->
+        
+          <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
+              <span class = "navbar-toggler-icon"></span>
           </button>
-        </div>
-        <!--Carrito final-->
-      
-        <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
-            <span class = "navbar-toggler-icon"></span>
-        </button>
-
-        <div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
-            <ul class = "navbar-nav mx-auto text-center">
-                <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#header">Inicio</a>
-                </li>
-                <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#SegundoBloque">SegundoBloque</a>
-                </li>
-                <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#TercerBloque">TercerBloque</a>
-                </li>
-                <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#CuartoBloque">CuartoBloque</a>
-                </li>
-                <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-dark" href = "#UltimoBloque">UltimoBloque</a>
-                </li>
-                <li class = "nav-item px-2 py-2 border-0">
-                </li>
-            </ul>
-            
-        </div>
     </div>
   </nav>
   <!-- MENU DE NAVEGACION (navbar) Final -->
