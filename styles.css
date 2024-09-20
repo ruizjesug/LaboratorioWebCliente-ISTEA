@@ -8,7 +8,6 @@ body {
     background: #f3f3f5;
 }
 
-
 .body-fixed {
     position: relative;
     width: 100%;
@@ -181,7 +180,6 @@ button.swal2-confirm{
     margin: 0 6px;
 }
 
-
 .main-navigation .menu li:hover>ul, .main-navigation .menu li.focus>ul {
     opacity: 1;
     margin-top: 6px;
@@ -247,7 +245,6 @@ ul {
     align-items: center;
 }
 
-
 .header-btn:hover {
     background: linear-gradient(145deg, #dcdcdc, #ffffff);
     box-shadow: 20px 20px 60px #cfcfd0, -20px -20px 60px #ffffff;
@@ -293,7 +290,6 @@ ul {
     box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
 }
 
-
 .uil {
     color: #0a2ff1;
     display: flex;
@@ -308,7 +304,7 @@ ul {
     height: 50px;
 }
 
-
+/* Ajustes para pantallas grandes como laptops y desktops */
 @media (min-width: 1500px) {
     .container {
         max-width: 1368px;
@@ -346,6 +342,7 @@ ul {
     }
 }
 
+/* Ajustes para pantallas medianas, como tablets */
 @media (max-width: 991px) {
     .main-navigation .menu {
         flex-direction: column;
@@ -366,6 +363,7 @@ ul {
     }
 }
 
+/* Ajustes para pantallas muy pequeñas, como teléfonos móviles */
 @media (max-width: 575px) {
     .container, .container-fluid {
         padding: 0 30px;
