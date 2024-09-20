@@ -381,7 +381,7 @@ ul {
         height: auto;
     }
     .card-title, .card-text {
-        font-size: 14px;
+        font-size: 18px;
     }
     .form-input {
         width: 100%;
@@ -391,18 +391,8 @@ ul {
         margin-right: 30px; /* Ajusta el botón del carrito o usuario */
     }
     button {
-        /* width: 100%; */
-        margin-top: 10px;
+        margin-top: 5px;
     }
 }
 
 
-@media (min-width: 967px) {
-    .col-md-4 {
-        padding-left: 5px;
-    }
-    p, body, button, input {
-        font-size: 18px;
-        line-height: 32px;
-    }
-}
