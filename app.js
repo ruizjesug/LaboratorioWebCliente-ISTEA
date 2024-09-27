@@ -1,50 +1,87 @@
 const productList = document.getElementById('product-list');
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let products = [];
 
 // Obtener productos de la API y renderizarlos
-fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(products => {
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.classList.add('col-md-4');
-            productCard.innerHTML = `
-                <div class="card mb-4">
-                    <img src="${product.image}" class="card-img-top" alt="${product.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text">$${product.price}</p>
-                        <button class="btn btn-primary" data-id="${product.id}">Ver detalles</button>
-                        <button class="btn btn-success mt-2" data-id="${product.id}">Agregar al carrito</button> <!-- GEM -->
+async function fetchProducts() {
+    try {
+        const res = await fetch('https://fakestoreapi.com/products');
+        products = await res.json();
+        console.log(products);
+        renderProducts(products);
+    } catch (error) {
+        console.error("Error al cargar los productos:", error);
+    }
+}
+
+fetchProducts();
+
+// Función para renderizar productos
+function renderProducts(productsToRender) {
+    productList.innerHTML = '';
+    productsToRender.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('col-md-4', 'mb-4');
+        productCard.innerHTML = `
+            <div class="card" style="height: 100%; margin: 5px; padding: 10px;">
+                <img src="${product.image}" class="card-img-top" alt="${product.title}" style="height: 250px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">$${product.price}</p>
+                    <div class="mt-auto d-flex flex-column align-items-center">
+                        <button class="btn btn-primary mb-2" data-id="${product.id}" style="width: 80%;">Ver detalles</button>
+                        <button class="btn btn-success" data-id="${product.id}" style="width: 100%;">Agregar al carrito</button>
                     </div>
                 </div>
-            `;
-            productList.appendChild(productCard);
+            </div>
+        `;
+        productList.appendChild(productCard);
 
-            // Evento para abrir el modal con los detalles
-            productCard.querySelector('button.btn-primary').addEventListener('click', () => {
-                showProductDetails(product);
-            });
+        // Agregar eventos
+        productCard.addEventListener('click', () => {
+            showProductDetails(product);
+        });
 
-            // Evento para agregar al carrito desde la tarjeta
-            productCard.querySelector('button.btn-success').addEventListener('click', () => {
-                addToCart(product); // GEM
-                Swal.fire('Producto agregado al carrito', '', 'success'); // GEM
-            });
+        productCard.querySelector('.btn-primary').addEventListener('click', (event) => {
+            event.stopPropagation();
+            showProductDetails(product);
+        });
+
+        productCard.querySelector('.btn-success').addEventListener('click', (event) => {
+            event.stopPropagation();
+            addToCart(product);
+            Swal.fire('Producto agregado al carrito', '', 'success');
         });
     });
+}
 
-// Función para mostrar detalles del producto en un modal
+// Función para mostrar detalles del producto
 function showProductDetails(product) {
-    document.getElementById('product-title').textContent = product.title;
-    document.getElementById('product-description').textContent = product.description;
-    document.getElementById('product-price').textContent = product.price;
-    
+    const modalBody = document.getElementById('product-modal').querySelector('.modal-body');
+    modalBody.innerHTML = '';
+
+    const productImage = document.createElement('img');
+    productImage.src = product.image;
+    productImage.alt = product.title;
+    productImage.style.width = '100%';
+    productImage.style.objectFit = 'contain';
+
+    const productTitle = document.createElement('h5');
+    productTitle.textContent = product.title;
+
+    const productDescription = document.createElement('p');
+    productDescription.textContent = product.description;
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `$${product.price}`;
+
+    modalBody.append(productImage, productTitle, productDescription, productPrice);
+
     const addToCartBtn = document.getElementById('add-to-cart');
     addToCartBtn.onclick = () => {
-        addToCart(product); // GEM
-        Swal.fire('Producto agregado al carrito', '', 'success'); // GEM
-        closeModal(); // GEM
+        addToCart(product);
+        Swal.fire('Producto agregado al carrito', '', 'success');
+        closeModal();
     };
 
     const modal = new bootstrap.Modal(document.getElementById('product-modal'));
@@ -55,14 +92,13 @@ function showProductDetails(product) {
 function addToCart(product) {
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
-        existingProduct.quantity += 1; // Aumentar la cantidad si ya existe
+        existingProduct.quantity += 1;
     } else {
-        cart.push({ ...product, quantity: 1 }); // Añadir nuevo producto con cantidad 1
+        cart.push({ ...product, quantity: 1 });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
-    renderCartItems(); // Renderizar el carrito inmediatamente si está abierto
-    Swal.fire('Producto agregado al carrito', '', 'success');
+    renderCartItems();
 }
 
 // Actualizar el contador de productos en el carrito
@@ -72,30 +108,25 @@ function updateCartCount() {
     cartCount.textContent = `(${totalQuantity})`;
 }
 
-// Inicializar el contador cuando se carga la página
+// Inicializar el contador
 updateCartCount();
 
+// Funciones del carrito
 const cartBtn = document.getElementById('cart-btn');
 const cartSidebar = document.getElementById('cart-sidebar');
 const cartItemsList = document.getElementById('cart-items');
 const clearCartBtn = document.getElementById('clear-cart');
 const checkoutBtn = document.getElementById('checkout');
-const closeCartBtn = document.getElementById('close-cart');
 
-// Función para abrir y cerrar el sidebar
+// Abrir y cerrar el sidebar del carrito
 cartBtn.addEventListener('click', () => {
     cartSidebar.classList.toggle('active');
-    renderCartItems(); // Renderiza los productos cada vez que se abre el carrito
+    renderCartItems();
 });
 
-// Función para cerrar el carrito sin perder productos
-closeCartBtn.addEventListener('click', () => {
-    cartSidebar.classList.remove('active');
-});
-
-// Función para renderizar los productos en el carrito
+// Renderizar productos en el carrito
 function renderCartItems() {
-    cartItemsList.innerHTML = ''; // Limpiar el contenido anterior
+    cartItemsList.innerHTML = '';
     cart.forEach((item, index) => {
         const li = document.createElement('li');
         li.classList.add('list-group-item');
@@ -108,7 +139,6 @@ function renderCartItems() {
         cartItemsList.appendChild(li);
     });
 
-    // Mostrar el total al final de la lista
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const totalLi = document.createElement('li');
     totalLi.classList.add('list-group-item', 'active');
@@ -116,27 +146,27 @@ function renderCartItems() {
     cartItemsList.appendChild(totalLi);
 }
 
-// Función para actualizar la cantidad de un producto en el carrito
+// Actualizar la cantidad de un producto en el carrito
 function updateQuantity(index, change) {
     const item = cart[index];
     item.quantity += change;
     if (item.quantity <= 0) {
-        cart.splice(index, 1); // Eliminar el producto si la cantidad es 0 o menor
+        cart.splice(index, 1);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     renderCartItems();
 }
 
-// Función para eliminar un producto del carrito
+// Eliminar un producto del carrito
 function removeFromCart(index) {
-    cart.splice(index, 1); // Elimina el producto del array del carrito
-    localStorage.setItem('cart', JSON.stringify(cart)); // Actualiza el localStorage
-    updateCartCount(); // Actualiza el contador del carrito
-    renderCartItems(); // Vuelve a renderizar los productos
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartItems();
 }
 
-// Función para vaciar todo el carrito
+// Vaciar el carrito
 clearCartBtn.addEventListener('click', () => {
     cart = [];
     localStorage.removeItem('cart');
@@ -145,7 +175,7 @@ clearCartBtn.addEventListener('click', () => {
     Swal.fire('Carrito vaciado', '', 'info');
 });
 
-// Función para finalizar la compra
+// Finalizar la compra
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         Swal.fire('El carrito está vacío', '', 'warning');
@@ -156,4 +186,33 @@ checkoutBtn.addEventListener('click', () => {
         renderCartItems();
         Swal.fire('Compra finalizada con éxito', '', 'success');
     }
+});
+
+// Función para buscar productos
+function searchProducts() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const filteredProducts = products.filter(product =>
+        product.title.toLowerCase().includes(searchTerm)
+    );
+    renderProducts(filteredProducts);
+}
+
+// Evento para buscar
+document.getElementById('search-button').addEventListener('click', searchProducts);
+document.getElementById('search-input').addEventListener('input', searchProducts);
+document.getElementById('search-input').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        searchProducts();
+    }
+});
+
+// Evento para filtrar por categoría
+const categoryLinks = document.querySelectorAll('.category');
+categoryLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const category = event.target.getAttribute('data-category');
+        const filteredByCategory = products.filter(product => product.category === category);
+        renderProducts(filteredByCategory);
+    });
 });
