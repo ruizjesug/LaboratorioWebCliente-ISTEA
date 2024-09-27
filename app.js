@@ -15,14 +15,21 @@ fetch('https://fakestoreapi.com/products')
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">$${product.price}</p>
                         <button class="btn btn-primary" data-id="${product.id}">Ver detalles</button>
+                        <button class="btn btn-success mt-2" data-id="${product.id}">Agregar al carrito</button> <!-- GEM -->
                     </div>
                 </div>
             `;
             productList.appendChild(productCard);
 
             // Evento para abrir el modal con los detalles
-            productCard.querySelector('button').addEventListener('click', () => {
+            productCard.querySelector('button.btn-primary').addEventListener('click', () => {
                 showProductDetails(product);
+            });
+
+            // Evento para agregar al carrito desde la tarjeta
+            productCard.querySelector('button.btn-success').addEventListener('click', () => {
+                addToCart(product); // GEM
+                Swal.fire('Producto agregado al carrito', '', 'success'); // GEM
             });
         });
     });
@@ -35,10 +42,11 @@ function showProductDetails(product) {
     
     const addToCartBtn = document.getElementById('add-to-cart');
     addToCartBtn.onclick = () => {
-        addToCart(product);
-        closeModal();
+        addToCart(product); // GEM
+        Swal.fire('Producto agregado al carrito', '', 'success'); // GEM
+        closeModal(); // GEM
     };
-    
+
     const modal = new bootstrap.Modal(document.getElementById('product-modal'));
     modal.show();
 }
