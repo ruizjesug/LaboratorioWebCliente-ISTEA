@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-/* font-family: 'Playfair Display', serif;
-font-family: 'Poppins', sans-serif; */
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -49,10 +47,13 @@ img {
     backdrop-filter: blur(20px);
 }
 
+/* Ajustar el botón del carrito para que no se estire */
 #cart-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    width: auto; /* Cambiar a ancho automático */
+    height: 40px; /* Altura ajustada para un mejor aspecto */
+    display: flex; /* Alinear el contenido */
+    align-items: center; /* Centrar verticalmente el contenido */
+    margin-left: auto; /* Alinear a la derecha */
 }
 
 #cart-sidebar {
@@ -60,58 +61,67 @@ img {
     background-color: #f8f9fa;
     position: fixed;
     right: -300px;
-    top: 90px; /* Cambia de top: 0 a top: 80px */
-    height: calc(100% - 80px); /* Ajusta la altura para tener en cuenta el espacio superior */
+    top: 90px;
+    height: calc(100% - 80px);
     padding: 20px;
     transition: 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
+/* Cambios en el estilo de las tarjetas */
 .card {
-    width: 18rem; /* Ajusta el ancho de la tarjeta */
-    height: 30rem; /* Aumenta la altura de la tarjeta */
+    width: 90%; /* Ajusta el ancho de la tarjeta */
+    max-width: 350px; /* Limita el ancho máximo */
+    height: 350px; /* Altura fija para las tarjetas */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    margin: 10px auto; /* Centra la tarjeta y reduce el margen */
+    padding: 15px; /* Espaciado interno */
+    transition: transform 0.2s; /* Efecto de transición al pasar el mouse */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Efecto de zoom al pasar el mouse */
 }
 
 .card-img-top {
     padding: 20px;
-    width: 100%;
-    height: 15rem; /* Ajusta la altura de la imagen */
-    object-fit: contain;
+    height: 250px; /* Mantiene la altura de la imagen */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin cortarse */
 }
 
 .card-title {
     font-size: 15px;
     font-family: Poppins;
     font-weight: 600;
-    display: flex;
-    justify-content: center;
+    text-align: center; /* Centra el texto del título */
 }
 
 .card-text {
     font-family: Poppins;
     font-size: 16px;
     font-weight: 400;
+    text-align: center; /* Centra el texto del precio */
 }
 
 .card-body {
-    flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Organiza los elementos en columna */
-    justify-content: center; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    text-align: center; /* Centra el texto */
+    flex-direction: column;
+    align-items: center; /* Centra el contenido */
+    flex-grow: 1;
 }
 
+/* Estilo de botones más estético y pequeño */
 .card-body button {
-    font-size: 14px;
-    font-weight: 400;
-    width: auto; /* Mantiene el tamaño original de los botones */
-    margin-top: 10px; /* Espacio entre los botones */
+    width: 100%; /* Botones ocupan todo el ancho de la tarjeta */
+    text-align: center;
+    margin: 5px 0;
+    padding: 8px; /* Menor padding para botones más pequeños */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
 }
 
 .card-body button:hover {
@@ -131,11 +141,11 @@ img {
 }
 
 .row {
-    margin: 0 -15px; /* Ajusta el margen negativo si es necesario */
+    margin: 0 -15px;
 }
 
 .col-md-4 {
-    padding: 0 15px; /* Ajusta el relleno para el espacio entre columnas */
+    padding: 0 15px;
 }
 
 #cart-sidebar.active {
@@ -232,7 +242,6 @@ ul {
 .main-navigation .menu .sub-menu li .active-sub-menu {
     color: #0a2ff1;
     background: #f3f3f5;
-    /* box-shadow: inset 8px 8px 12px #e2e2e2, inset -8px -8px 12px #ffffff; */
 }
 
 .header-right {
@@ -243,61 +252,50 @@ ul {
 }
 
 .header-btn {
-    width: 40px;
-    height: 40px;
+    width: 40px; /* Ancho del botón */
+    height: 40px; /* Altura del botón */
     display: inline-flex;
     justify-content: center;
-    border-radius: 10px;
-    position: relative;
-    margin-left: 20px;
-    transition: 0.3s;
-    /* box-shadow: inset 9px px 7px #dadada, inset -6px -6px 7px #ffffff; */
     align-items: center;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s; /* Incorporado el efecto de transformación */
 }
 
 .header-btn:hover {
-    background: linear-gradient(145deg, #dcdcdc, #ffffff);
-    box-shadow: 20px 20px 60px #cfcfd0, -20px -20px 60px #ffffff;
+    background: rgba(10, 47, 241, 0.1); /* Fondo al pasar el mouse */
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
 }
 
 .header-search-form {
-    position: relative;
+    display: flex; /* Asegura que la barra ocupe el ancho completo */
+    width: auto; /* Cambiar a ancho automático */
+    max-width: 400px; /* Ancho máximo para la barra de búsqueda */
+    margin-right: 10px; /* Espacio a la derecha para el botón */
 }
 
-.header-search-form button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 48px;
-    height: 100%;
-    opacity: 0.5;
+/* Ajustes a la barra de búsqueda */
+.header-search-form .input-group {
+    width: 100%; /* Asegura que el grupo ocupe todo el ancho */
 }
 
 .header-search-form .form-input {
-    font-size: 14px;
-    padding-right: 40px;
-    width: 200px;
-    height: 40px;
-}
-
-.form-input::placeholder {
-    color: rgba(70 69 71 / 0.7);
-}
-
-.form-input {
-    width: 100%;
-    height: 50px;
-    outline: none !important;
-    padding: 10px 15px;
-    color: #0d0d25;
-    border-radius: 10px;
+    height: 40px; /* Ajustar altura para que coincida con el diseño */
+    padding: 5px 10px; /* Espaciado interno */
+    flex-grow: 1; /* Permite que la barra ocupe todo el espacio disponible */
+    border-radius: 10px 0 0 10px; /* Bordes redondeados para la izquierda */
     border: none;
     background: #f8f8f8;
     box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
+}
+
+/* Asegura que el botón tenga la misma altura que la barra */
+.header-search-form button {
+    height: 40px; /* Asegura que el botón tenga la misma altura que la barra */
+    margin-left: 5px; /* Espacio entre la barra y el botón */
+}
+
+.form-input::placeholder {
+    color: rgba(70, 69, 71, 0.7);
 }
 
 .uil {
@@ -325,86 +323,34 @@ ul {
     .container {
         max-width: 1400px;
     }
-    p,
-    body,
-    button,
-    input {
+    p, body, button, input {
         font-size: 18px;
-        line-height: 32px;
+        line-height: 1.5;
     }
 }
 
-@media (max-width: 1399px) {
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 0; /* Reduce el padding en pantallas pequeñas */
+    }
+    
+    .header-search-form {
+        width: auto; /* Asegura que la barra de búsqueda ocupe todo el ancho */
+        margin-bottom: 10px; /* Espacio inferior para la barra de búsqueda */
+    }
+    
     .header-right {
-        margin-left: 20px;
-    }
-    .main-navigation .menu li {
-        margin: 0 3px;
+        margin-left: 0; /* Elimina el margen a la izquierda en pantallas pequeñas */
+        justify-content: space-between; /* Espaciado entre íconos */
     }
 }
 
-@media (max-width: 1199px) {
-    @media (min-width: 1200px) {
-        .container {
-            max-width: 1200px;
-        }
-
-        .card {
-            width: 18rem;
-            height: 30rem; /* Aumenta la altura de la tarjeta */
-        }
-    }
+/* Mejora el aspecto del botón del carrito en pantallas pequeñas */
+#cart-btn {
+    width: auto; /* Asegura que el ancho sea automático */
+    margin-left: 0; /* Elimina margen en pantallas pequeñas */
 }
 
-/* Ajustes para pantallas medianas, como tablets */
-@media (max-width: 991px) {
-    .main-navigation .menu {
-        flex-direction: column;
-        align-items: center;
-        display: none;
-    }
-
-    .header-right {
-        margin-left: 10px;
-    }
-
-    .card {
-        width: 100%; /* Tarjetas en una columna */
-    }
-
-    .header-search-form .form-input {
-        width: 170px; /* Disminuye el tamaño del input de búsqueda */
-    }
-}
-
-/* Ajustes para pantallas muy pequeñas, como teléfonos móviles */
-@media (max-width: 575px) {
-    .container,
-    .container-fluid {
-        padding: 0 30px;
-    }
-    .card {
-        width: 100%; /* Las tarjetas ocuparán todo el ancho de la pantalla */
-        height: auto; /* Ajusta la altura de las tarjetas */
-    }
-    .main-navigation {
-        display: none; /* Oculta la navegación principal */
-    }
-    .card-img-top {
-        height: auto;
-    }
-    .card-title,
-    .card-text {
-        font-size: 18px;
-    }
-    .form-input {
-        width: 100%;
-        padding: 12px;
-    }
-    .header-btn {
-        margin-right: 30px; /* Ajusta el botón del carrito o usuario */
-    }
-    button {
-        margin-top: 5px;
-    }
+.navbar-nav .nav-link {
+    text-align: center; /* Centra el texto de los enlaces */
 }
